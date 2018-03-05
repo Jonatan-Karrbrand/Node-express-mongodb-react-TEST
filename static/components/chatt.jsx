@@ -12,7 +12,7 @@ class Chatt extends React.Component {
       <p>{this.state.text}</p>
       <input onChange={function(event){
           this.setState({text: event.target.value})
-        }}></input>
+        }} value={this.state.text}></input>
 
       <button onClick={function() {
 
