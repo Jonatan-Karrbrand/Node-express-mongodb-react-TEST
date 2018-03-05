@@ -8,8 +8,7 @@ var db;
 
 app.set('view engine', 'html');
 
-app.use('/index', express.static(path.join(path.resolve(), 'static')));
-app.use(express.static('static'));
+app.use(express.static(path.join(path.resolve(), 'static')));
 
 app.get('/', function (request, response) {
   response.render('index');
