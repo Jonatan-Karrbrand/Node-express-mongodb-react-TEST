@@ -1,6 +1,6 @@
 var path = require('path');
 module.exports = {
-  entry: './static/index.js',
+  entry: './static/index.jsx',
   mode: 'development',
   output: {
     filename: 'bundle.js',
