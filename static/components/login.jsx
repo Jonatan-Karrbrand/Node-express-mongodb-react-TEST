@@ -3,7 +3,6 @@ var React = require('react');
 class LoginComponent extends React.Component {
 	render(){
 		var inputUsername = <input onChange={function(){
-					var v
 					console.log(this.state)}} type="text"></input>;
 		var inputPassword = <input type="password"></input>;
 		var button = <button>Logga in</button>;
