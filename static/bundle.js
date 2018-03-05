@@ -347,6 +347,18 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 
 /***/ }),
 
+/***/ "./static/components/chatt.jsx":
+/*!*************************************!*\
+  !*** ./static/components/chatt.jsx ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nvar React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar Chatt = function (_React$Component) {\n  _inherits(Chatt, _React$Component);\n\n  function Chatt() {\n    _classCallCheck(this, Chatt);\n\n    return _possibleConstructorReturn(this, (Chatt.__proto__ || Object.getPrototypeOf(Chatt)).apply(this, arguments));\n  }\n\n  _createClass(Chatt, [{\n    key: 'render',\n    value: function render() {\n      return React.createElement(\n        'div',\n        null,\n        React.createElement(\n          'p',\n          null,\n          'test'\n        ),\n        React.createElement('input', null)\n      );\n    }\n  }]);\n\n  return Chatt;\n}(React.Component);\n\nmodule.exports = Chatt;\n\n//# sourceURL=webpack:///./static/components/chatt.jsx?");
+
+/***/ }),
+
 /***/ "./static/components/login.jsx":
 /*!*************************************!*\
   !*** ./static/components/login.jsx ***!
@@ -367,7 +379,7 @@ eval("\n\nvar _createClass = function () { function defineProperties(target, pro
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nvar ReactDOM = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/*var HelloWorld = require('./components/helloworld.jsx');*/\nvar LoginComponent = __webpack_require__(/*! ./components/login.jsx */ \"./static/components/login.jsx\");\nReactDOM.render(React.createElement(LoginComponent, null), document.getElementById('app'));\n\n//# sourceURL=webpack:///./static/index.jsx?");
+eval("\n\nvar React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nvar ReactDOM = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/*var HelloWorld = require('./components/helloworld.jsx');*/\nvar LoginComponent = __webpack_require__(/*! ./components/login.jsx */ \"./static/components/login.jsx\");\nvar ChattComponent = __webpack_require__(/*! ./components/chatt.jsx */ \"./static/components/chatt.jsx\");\nReactDOM.render(React.createElement(\n    'div',\n    null,\n    React.createElement(LoginComponent, null),\n    React.createElement(ChattComponent, null)\n), document.getElementById('app'));\n\n//# sourceURL=webpack:///./static/index.jsx?");
 
 /***/ })
 
