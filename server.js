@@ -6,10 +6,13 @@ var MongoClient = require('mongodb').MongoClient;
 var ObjectID = require('mongodb').ObjectID;
 var db;
 
+app.set('view engine', 'html');
+
 app.use('/index', express.static(path.join(path.resolve(), 'static')));
+app.use(express.static('static'));
 
 app.get('/', function (request, response) {
-  response.send('Hello World!');
+  response.render('index');
 });
 
 app.listen(3000, function () {
