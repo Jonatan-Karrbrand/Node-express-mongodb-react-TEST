@@ -1,7 +1,7 @@
 body {
 }
 
-#login-container {
+#login-container, #register-container {
 	box-shadow: 0px 0px 5px #333;
 	width: 40%;
 	padding-top: 1rem;
@@ -30,4 +30,19 @@ body {
 	margin: 0 auto;
 	margin-top: 0.5rem;
 	margin-bottom: 0.5rem;
+}
+
+#register-container h2{
+	font-size: 4rem;
+	text-align: center;
+	font-family: 'roboto';
+	color: #111111;
+	font-weight: 100;
+	margin-bottom: 2rem;
+}
+
+#register-container p{
+	font-family: 'roboto';
+	color: #111111;
+	font-weight: 100;
 }
