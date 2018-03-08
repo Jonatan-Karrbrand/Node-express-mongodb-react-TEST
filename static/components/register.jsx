@@ -1,6 +1,6 @@
 var React = require('react');
 
-class Register extends React.Component {
+class RegisterComponent extends React.Component {
 	render(){
 		return <div id="register-container">
       <h2>Registrering</h2>
@@ -21,4 +21,4 @@ class Register extends React.Component {
 	}
 }
 
-module.exports = Register;
+module.exports = RegisterComponent;
