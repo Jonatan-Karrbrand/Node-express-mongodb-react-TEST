@@ -1,5 +1,6 @@
 var React = require('react');
 
+var messsages = [];
 class Chatt extends React.Component {
   constructor() {
     super();
@@ -10,7 +11,7 @@ class Chatt extends React.Component {
   }
   render() {
     return <div>
-      <p>{this.state.message}</p>
+      <Chattext></Chattext>
       <input onChange={event => this.setState({text: event.target.value})}></input>
 
       <button onClick={() => fetch('http://localhost:3000/messages', {
@@ -27,22 +28,34 @@ class Chatt extends React.Component {
         })}>Send</button>
     </div>
   }
-  componentDidMount() {
-    fetch('http://localhost:3000/messages').then(response =>
-    response.json()).then(result => {
-      console.log(result);
-      var messsages = [];
-      console.log(result.length)
-      for (var i = 0; i < result.length; i++) {
-        messsages.push(result[i].messages)
-      }
-      console.log(messsages)
-      this.setState({
-        message: messsages.map()
-      });
-      console.log(result.message)
-    });
+}
+class Chattext extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      message: []
+    };
   }
+  render() {
+
+    return <ul>
+            {this.state.message.map(function (value) { return <li key={"hej"}>{value}</li>; })}
+          </ul>
+    }
+    componentDidMount() {
+      fetch('http://localhost:3000/messages').then(response =>
+        response.json()).then(result => {
+          console.log(result);
+          console.log(result.length)
+          for (var i = 0; i < result.length; i++) {
+            messsages.push(result[i].messages)
+            this.setState({
+              message: messsages
+            })
+          }
+          console.log(messsages)
+        });
+      }
 }
 
 module.exports = Chatt;
