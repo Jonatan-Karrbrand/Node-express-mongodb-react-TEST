@@ -19,7 +19,7 @@ class LoginComponent extends React.Component {
           ? <div>
               <h2>Write username</h2>
               <input onChange={event => this.setState({usernameInput: event.target.value})}></input>
-              <input value="Register" type='button' onClick={() => fetch('/userinfo', {
+              <input value="Add User" type='button' onClick={() => fetch('/userinfo', {
                   body: '{"userName":"' + this.state.usernameInput + '"}',
                   headers: {
                     "Content-Type": "application/json"
