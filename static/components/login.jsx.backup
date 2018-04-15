@@ -1,0 +1,62 @@
+var React = require('react');
+var Chatt = require('./chatt2.jsx');
+var PrivateChatt = require('./privateChatt.jsx');
+var resultat;
+
+class LoginComponent extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      usernameInput: '',
+      isLoggedIn: false
+    }
+  }
+  render() {
+    return <div>
+      <h1>Chatt</h1>
+      {
+        !this.state.isLoggedIn
+          ? <div>
+              <h2>Write username</h2>
+              <input id="inputField" onChange={event => this.setState({usernameInput: event.target.value})}></input>
+              <input type='button' onClick={function(){ fetch('/userinfo').then(function(response) {
+                return response.json();
+              }).then(function(result){
+                    var usernames = result.map(user => user.userName);
+                    console.log(usernames);
+                      var inputName = document.getElementById('inputField').value;
+                    if(usernames.includes(inputName)){
+                    console.log('user already exists!');
+                  } else { fetch('/userinfo', {
+                      body: '{"userName":"' + this.state.usernameInput + '"}',
+                      headers: {
+                        "Content-Type": "application/json"
+                      },
+                      method: 'POST'
+                    }).then(function(response) {
+                      return response.json();
+                    }).then(function(result) {
+                      resultat = result;
+                      this.setState({isLoggedIn: true, usernameInput: this.state.usernameInput});
+                    }.bind(this))}
+              })
+            }}></input>
+
+              {/* Logga in*/}
+                <input type='button' onClick={ () =>
+                  fetch('/userinfo/' + this.state.usernameInput).then(response => response.json()).then(result => {
+                    resultat = result;
+                    console.log(result)
+                    this.setState({isLoggedIn: true, usernameInput: this.state.usernameInput});
+                  })}></input>
+              </div>
+          : <div>
+              <Chatt username={this.state.usernameInput}></Chatt>
+              <PrivateChatt userInfo={resultat}></PrivateChatt>
+            </div>
+      }
+    </div>
+  }
+}
+
+module.exports = LoginComponent;

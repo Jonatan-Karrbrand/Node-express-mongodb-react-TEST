@@ -1,0 +1,112 @@
+var React = require('react');
+var PropTypes = require('prop-types');
+var currentUserId;
+var friends = [];
+
+// Main private chatt component
+class PrivateChattComponent extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      text: ''
+    }
+  }
+  render() {
+    return <div>
+      <h3>Logged in as: {this.props.userInfo.ops[0].userName}</h3>
+      <h4>Add friend</h4>
+      <UsersComponent></UsersComponent>
+      <FriendsComponent></FriendsComponent>
+    </div>
+  }
+  componentDidMount() {
+    currentUserId = this.props.userInfo.ops[0]._id;
+  }
+}
+
+// Show users and add friends
+class UsersComponent extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      messageBox: [],
+      messages: [],
+      currentFriendToAdd: ''
+    };
+  }
+  render() {
+    return <div id="chattBox">
+      <ul>
+        {
+          this.state.messageBox.map(function(value) {
+            return <li value={value._id} onClick={() => addFriend(value._id, value.userName)} key={value._id}>{value.userName}</li>;
+          })
+        }
+      </ul>
+    </div>
+  }
+  componentDidMount() {
+    fetch('http://localhost:3000/userinfo').then(response => response.json()).then(result => {
+      this.setState({messages: []})
+      for (var i = 0; i < result.length; i++) {
+        this.state.messages.push(result[i])
+      }
+      this.setState({messageBox: this.state.messages})
+    });
+  }
+}
+function addFriend(userId, userName) {
+  friends.push({userName, userId})
+  fetch('http://localhost:3000/userinfo/' + currentUserId + '/update-friends', {
+    body: JSON.stringify({friends: friends}),
+    headers: {
+      "Content-Type": "application/json"
+    },
+    method: 'POST'
+  }).then(function(response) {
+    return response.json();
+  }).then(function(result) {
+    console.log(result)
+  })
+}
+
+// Friends component
+class FriendsComponent extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      currentUsersFriends: [],
+      friend: [],
+      chattWith: []
+    }
+  }
+  render() {
+    return <div>
+      <h4>My friends</h4>
+      <ul>
+        {this.state.currentUsersFriends.map( value => {
+          return <li key={value[1]}>{value[0]}</li>
+        }
+        )}
+      </ul>
+
+    </div>
+  }
+  componentDidMount() {
+    setInterval(function() {
+      fetch('http://localhost:3000/userinfo/' + currentUserId + '/friends').then(response => response.json()).then(result => {
+        this.setState({friend: []})
+        result[0].friends.map(function(value) {
+          this.state.friend.push([value.userName , value.userId])
+        }.bind(this))
+        this.setState({currentUsersFriends: this.state.friend})
+      });
+    }.bind(this), 5000)
+  }
+}
+
+PrivateChattComponent.propTypes = {
+  userInfo: PropTypes.object
+}
+
+module.exports = PrivateChattComponent;

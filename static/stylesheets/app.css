@@ -1,48 +1,10 @@
-body {
+#chattBox {
+  margin-bottom: 20px;
+	width: 400px;
+	height: 300px;
+	border: 1px solid black;
+	overflow: auto;
 }
-
-#login-container, #register-container {
-	box-shadow: 0px 0px 5px #333;
-	width: 40%;
-	padding-top: 1rem;
-	padding-bottom: 4rem;
-	margin: 4rem auto;
-	background-color: rgba( 181, 181, 181, 0.584 );
-}
-
-#inputs-container {
-	display: flex;
-	flex-direction: column;
-
-}
-
-#login-container h2 {
-	font-size: 7rem;
-	text-align: center;
-	font-family: 'roboto';
-	color: #111111;
-	font-weight: 100;
-	margin-bottom: 2rem;
-}
-
-#inputs-container input {
-	width: 30%;
-	margin: 0 auto;
-	margin-top: 0.5rem;
-	margin-bottom: 0.5rem;
-}
-
-#register-container h2{
-	font-size: 4rem;
-	text-align: center;
-	font-family: 'roboto';
-	color: #111111;
-	font-weight: 100;
-	margin-bottom: 2rem;
-}
-
-#register-container p{
-	font-family: 'roboto';
-	color: #111111;
-	font-weight: 100;
+#userName {
+	font-weight: bold;
 }
